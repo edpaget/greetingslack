@@ -61,11 +61,12 @@ def parse_join(message):
 
 #Connects to Slacks and initiates socket handshake
 def start_rtm():
-        r = requests.get("https://slack.com/api/rtm.start?token="+TOKEN, verify=False)
+        r = requests.get(
+                "https://slack.com/api/rtm.start?token="+TOKEN, verify=False
+        )
         r = r.json()
-        print r
         r = r["url"]
-    return r
+        return r
 
 
 def on_message(ws, message):
@@ -88,4 +89,4 @@ if __name__ == "__main__":
         r = start_rtm()
         ws = websocket.WebSocketApp(r, on_message = on_message, on_error = on_error, on_close = on_close)
         #ws.on_open
-    ws.run_forever()
+        ws.run_forever()
