@@ -38,7 +38,7 @@ def parse_join(message):
                         data=dict(
                                 token=TOKEN,
                                 channel=x,
-                                text=urllib.quote(MESSAGE),
+                                text=MESSAGE,
                                 parse="full",
                                 as_user=True,
                                 unfurl_links=(UNFURL.lower() == "true")
@@ -51,7 +51,7 @@ def parse_join(message):
                         data=dict(
                                 token=TOKEN,
                                 channel=x,
-                                text=urllib.quote(MESSAGE),
+                                text=MESSAGE,
                                 parse="full",
                                 as_user=True,
                                 unfurl_links=(UNFURL.lower() == "true")
