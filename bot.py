@@ -36,7 +36,7 @@ def parse_join(message):
                 xx = requests.post(
                         "https://slack.com/api/chat.postMessage",
                         data=dict(
-                                token=TOKEN
+                                token=TOKEN,
                                 channel=x,
                                 text=urllib.quote(MESSAGE),
                                 parse="full",
@@ -49,7 +49,7 @@ def parse_join(message):
                 xx = requests.post(
                         "https://slack.com/api/chat.postMessage",
                         data=dict(
-                                token=TOKEN
+                                token=TOKEN,
                                 channel=x,
                                 text=urllib.quote(MESSAGE),
                                 parse="full",
