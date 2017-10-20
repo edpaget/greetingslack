@@ -22,7 +22,8 @@ except:
 
 def parse_join(message):
     m = json.loads(message)
-    if (m['type'] == "team_join"):
+    if m['type'] == "team_join" or \
+       (m['type'] == 'message' and m['text'] == '!rules'):
         x = requests.get("https://slack.com/api/im.open?token="+TOKEN+"&user="+m["user"]["id"])
         x = x.json()
         x = x["channel"]["id"]
@@ -30,9 +31,6 @@ def parse_join(message):
           xx = requests.post("https://slack.com/api/chat.postMessage?token="+TOKEN+"&channel="+x+"&text="+urllib.quote(MESSAGE)+"&parse=full&as_user=true&unfurl_links=false")
         else:
           xx = requests.post("https://slack.com/api/chat.postMessage?token="+TOKEN+"&channel="+x+"&text="+urllib.quote(MESSAGE)+"&parse=full&as_user=true")
-        #DEBUG
-        #print '\033[91m' + "HELLO SENT" + m["user"]["id"] + '\033[0m'
-        #
 
 #Connects to Slacks and initiates socket handshake
 def start_rtm():
